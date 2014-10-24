@@ -86,7 +86,7 @@ export class ChangeRecord {
   }
 
   set object(obj) {
-    this._clearObject(obj);
+    this._clearObject();
     this._object = obj;
 
     if (obj === null) {
