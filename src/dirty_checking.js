@@ -126,6 +126,7 @@ export class ChangeRecord {
       this._mode = _MODE_GETTER_;
     }else{
       this._mode = _MODE_MAP_FIELD_;
+      this._getCurrentValue = new Function("return this.object." + this.field);
     }
   }
 
@@ -154,7 +155,7 @@ export class ChangeRecord {
         break;
       case _MODE_MAP_FIELD_:
         if (!this.object) return undefined;
-        current = this.object[this.field];
+        current = this._getCurrentValue();
         break;
       case _MODE_IDENTITY_:
         current = this.object;
